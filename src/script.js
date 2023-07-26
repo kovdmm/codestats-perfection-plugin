@@ -91,13 +91,8 @@
     };
 
     // STATS
-        let element = find(selector);
-        if (!element) {
-            return;
-        }
-
-        let cachedValue = element.innerText;
     const observeTextContent = (selector, handler, ms = 1000) => {
+        let cachedValue = find(selector).textContent;
         const observer = () => {
             element = find(selector);
             if (element.textContent !== cachedValue) {
