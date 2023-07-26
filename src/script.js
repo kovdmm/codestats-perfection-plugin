@@ -20,7 +20,7 @@
         if (location.pathname.startsWith("/users/")) {
             await renderPanel();
             fetchCalculateRefreshPanelData();
-            observeInnerText(LEVEL_INDICATOR_SELECTOR, fetchCalculateRefreshPanelData);
+            observeTextContent(LEVEL_INDICATOR_SELECTOR, fetchCalculateRefreshPanelData);
         }
     };
 
@@ -38,7 +38,7 @@
 
         if (location.pathname.startsWith("/users/")) {
             const addBookmarkButtonElement = div();
-            addBookmarkButtonElement.innerText = ADD_BOOKMARK_LABEL;
+            addBookmarkButtonElement.textContent = ADD_BOOKMARK_LABEL;
             addBookmarkButtonElement.className = `${PILL_CLASS_NAME} ${PILL_BUTTON_CLASS_NAME}`;
             addBookmarkButtonElement.addEventListener("click", handleBookmarkAdd);
             buttonsElement.appendChild(addBookmarkButtonElement);
@@ -66,7 +66,7 @@
         pillElement.innerHTML = `${avatar(username)} ${username}`;
         const deleteButton = div();
         deleteButton.className = PILL_DELETE_CLASS_NAME;
-        deleteButton.innerText = DELETE_BOOKMARK_LABEL;
+        deleteButton.textContent = DELETE_BOOKMARK_LABEL;
         deleteButton.addEventListener("click", (event) => handleBookmarkDelete(event, username));
         pillElement.appendChild(deleteButton);
         return pillElement;
@@ -91,18 +91,18 @@
     };
 
     // STATS
-    const observeInnerText = (selector, handler, ms = 1000) => {
         let element = find(selector);
         if (!element) {
             return;
         }
 
         let cachedValue = element.innerText;
+    const observeTextContent = (selector, handler, ms = 1000) => {
         const observer = () => {
             element = find(selector);
-            if (element.innerText !== cachedValue) {
-                handler(element, cachedValue, element.innerText);
-                cachedValue = element.innerText;
+            if (element.textContent !== cachedValue) {
+                handler(element, cachedValue, element.textContent);
+                cachedValue = element.textContent;
             }
             setTimeout(observer, ms);
         };
@@ -166,12 +166,12 @@
         panelElement.style.color = rgb(Math.round(totalProgress) * 255);
 
         const panelSections = panelElement.children[0].children; // findAll(`.${PANEL_CLASS_NAME} div div`);
-        panelSections[0].innerText = `Remains: ${xp(remainsXp)}`;
-        panelSections[1].innerText = `Last 12 hours: ${plusXp(last12HoursXp)}`;
-        panelSections[3].innerText = `Today: ${plusXp(todayXp)} (${percentage(todayProgress)}) ${emojiStatus}`;
-        panelSections[4].innerText = `Total: ${en(thisDayXp)} of ${xp(maxXp)} (${percentage(totalProgress)})`;
-        panelSections[6].innerText = `Productivity: ${percentage(productivity)}`;
-        panelSections[7].innerText = `Last 14 days: ${xp(lastTwoWeeksXp)}`;
+        panelSections[0].textContent = `Remains: ${xp(remainsXp)}`;
+        panelSections[1].textContent = `Last 12 hours: ${plusXp(last12HoursXp)}`;
+        panelSections[3].textContent = `Today: ${plusXp(todayXp)} (${percentage(todayProgress)}) ${emojiStatus}`;
+        panelSections[4].textContent = `Total: ${en(thisDayXp)} of ${xp(maxXp)} (${percentage(totalProgress)})`;
+        panelSections[6].textContent = `Productivity: ${percentage(productivity)}`;
+        panelSections[7].textContent = `Last 14 days: ${xp(lastTwoWeeksXp)}`;
     };
 
     const getUsernames = () => JSON.parse(localStorage.getItem(USERNAMES_STORAGE_KEY) || "[]") || [];
