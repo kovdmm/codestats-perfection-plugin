@@ -2,12 +2,12 @@ main {
     background-color: white;
 }
 
-.stripe.stripe-accent {
-    background-color: rgb(56, 56, 56);
+body {
+    grid: "bar" "nav" "flash" "main" "footer"/100%;
 }
 
-#nav-stripe.stripe {
-    margin-top: 40px;
+.stripe.stripe-accent {
+    background-color: rgb(56, 56, 56);
 }
 
 .kovdmm-panel {
@@ -40,12 +40,13 @@ main {
     padding: 0;
     flex-basis: 100%;
 }
+
 .kovdmm-bar {
-    position: absolute;
+    grid-area: bar;
     width: 100%;
     line-height: 28px;
-    padding: 4px 10px;
-    height: 40px;
+    padding: 4px 10px 1px;
+    min-height: 40px;
     background: white;
     border-bottom: 1px solid #eee;
     border-top: 3px solid #ccc;
@@ -58,7 +59,7 @@ main {
     text-decoration: none !important;
     color: #000 !important;
     padding: 0 8px;
-    margin-right: 5px;
+    margin-bottom: 3px;
     border-radius: 14px;
     transition: background 0.2s ease;
     cursor: pointer;
@@ -66,6 +67,10 @@ main {
     &:hover {
         background: #bbb8;
     }
+}
+
+.kovdmm-pill {
+    margin-right: 3px;
 }
 
 .kovdmm-pill img {
