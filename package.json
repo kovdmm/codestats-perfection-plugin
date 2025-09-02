@@ -1,12 +1,15 @@
 {
-    "name": "codestats-perfection-plugin",
-    "version": "1.3.2",
-    "scripts": {
-        "prettier": "prettier --write **/*",
-        "publish": "node ./scripts/publish.js"
-    },
-    "devDependencies": {
-        "jszip": "^3.10.1",
-        "prettier": "^3.0.0"
-    }
+  "name": "codestats-perfection-plugin",
+  "version": "1.3.2",
+  "scripts": {
+    "prettier": "prettier --write .",
+    "publish": "node ./scripts/publish.js"
+  },
+  "devDependencies": {
+    "jszip": "^3.10.1",
+    "prettier": "^3.0.0"
+  },
+  "prettier": {
+    "printWidth": 120
+  }
 }
